@@ -1,0 +1,21 @@
+Nathan Heckman
+
+To find the most optimal array type, average wait times are computed by running each method 10 times.
+
+Average time for arrayStatic() : 30+30+31+45+35+27+28+31+30+33 = 32.0
+Average time for arrayStack()  : 38+23+24+24+37+22+24+39+25+23 = 27.9  FASTEST
+Average time for arrayDynamic(): 46+29+28+36+34+28+29+52+41+50 = 37.3  SLOWEST
+
+Why did arrayStack() run the fastest?
+
+The difference in runtimes comes from the different types of memory each implementation uses. 
+
+arrayStatic()  -> static memory
+arrayStack()   -> stack memory
+arrayDynamic() -> heap memory
+
+- Stack runs faster than heap, due to the fact that memory is assigned sequentially and can be referenced without a direct pointer for each value. Each point is referenced via offset to the main stack pointer
+- More bookkeeping is required for memory allocation in heap, since each value has its own unique pointer reference
+- Stack access pattern makes it trivial to allocate and deallocate memory from it
+- Pointers/Integers are simply incremented/decremented in stack
+- Static memory values are always located in the same place globally for all processes, so no addtional computation is required to access them
